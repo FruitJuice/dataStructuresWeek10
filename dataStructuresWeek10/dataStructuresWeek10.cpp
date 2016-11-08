@@ -33,13 +33,12 @@ struct customer
 int main()
 {
 	int i;
-	int factor = 1;
 	struct customer customers[10];
+	srand((unsigned)time(NULL));
 	char names[10][50] = { "Dana Brown", "Liana Wolfe", "Christop Mays", "Chloe Duran","Spencer Thomas","Kyson Hill","Lucy Villegas","Jamiya Murray","Jaylon Gray","Valentina Love" };
 	printf("Name \t\t\tAccount Number \tBalance \tDate of Last Transaction\n\n");
 	for(i = 0; i < 10; i++)
 	{
-		srand(factor*time(NULL));//Generates a new seed for each customers[i] by multiplying by an increasing number
 		strcpy_s(customers[i].name, names[i]);
 		customers[i].accountNumber = 10000 + i;
 		customers[i].balance = getBalance();
@@ -47,7 +46,6 @@ int main()
 		customers[i].lastTrans.year = getYear();
 		customers[i].lastTrans.day = getDay(customers[i].lastTrans.month);
 		printCustomer(customers[i]);
-		factor++; // Increases the number by which seed is multiplied
 	}
 	return 0;
 }
