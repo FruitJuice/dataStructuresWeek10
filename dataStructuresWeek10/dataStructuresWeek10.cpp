@@ -15,17 +15,17 @@ void printCustomer(struct customer customerX);	//Prints out customer data
 
 
 //Structure definitions
-struct date
+typedef struct Date
 {
 	int day, month, year;
-};
+}date;
 
 struct customer
 {
 	char name[50];			//String of the customers full name	
 	int accountNumber;		//Customer account number starting with 10000
 	double balance;			//Customer balance ranging from -5000 to 5000
-	struct date lastTrans;	//Date of last transaction
+	date lastTrans;	//Date of last transaction
 };
 
 
@@ -62,22 +62,19 @@ int getMonth()
 
 int getDay(int month)
 {
-	int day;
-	if ((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12))
-	{
-		day = rand() % 31 + 1;
-	}
-
+	int day, max = 31;;
 	if ((month == 4) || (month == 6) || (month == 9) || (month == 11))
 	{
-		day = rand() % 30 + 1;
+		max = 30;
 
 	}
 
 	if((month == 2))
 	{
-		day = rand() % 28 + 1;
+		max = 28;
 	}
+	day = rand() % max + 1;
+
 	return day;
 }
 
